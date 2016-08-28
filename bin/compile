@@ -127,7 +127,7 @@ if [ ! -e $build_dir/Procfile ]; then
   fi
 fi
 
-# install sass / compass / haml
+# install sass / compass
 status "Installing Sass / Compass / Haml"
 export GEM_HOME=$build_dir/.gem/ruby/1.9.1
 PATH="$GEM_HOME/bin:$PATH"
@@ -136,11 +136,9 @@ if test -d $cache_dir/ruby/.gem; then
   cp -r $cache_dir/ruby/.gem $build_dir
   HOME=$build_dir gem update sass --user-install --no-rdoc --no-ri
   HOME=$build_dir gem update compass --user-install --no-rdoc --no-ri
-  HOME=$build_dir gem update haml --user-install --no-rdoc --no-ri
 else
   HOME=$build_dir gem install sass --user-install --no-rdoc --no-ri
   HOME=$build_dir gem install compass --user-install --no-rdoc --no-ri
-  HOME=$build_dir gem install haml --user-install --no-rdoc --no-ri
 fi
 
 # cache ruby gems
@@ -173,6 +171,7 @@ fi
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 
 # Post package.json to nomnom service
 # Use a subshell so failures won't break the build.
