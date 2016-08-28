@@ -129,7 +129,7 @@ fi
 
 # install sass / compass
 status "Installing Sass / Compass / Haml"
-export GEM_HOME=$build_dir/.gem/ruby/1.9.1
+export GEM_HOME=$build_dir/.gem/ruby/2.2.0
 PATH="$GEM_HOME/bin:$PATH"
 if test -d $cache_dir/ruby/.gem; then
   status "Restoring ruby gems directory from cache"
@@ -171,7 +171,7 @@ fi
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
-echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
+echo "export PATH=\"\$HOME/.gem/ruby/2.2.0/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 
 # Post package.json to nomnom service
 # Use a subshell so failures won't break the build.
