@@ -159,6 +159,14 @@ else
   status "No Gulpfile (gulpfile.js) found"
 fi
 
+# Check and run Gulp
+(
+  if $is_gulpfile_present; then
+    status "Running gulp heroku:$NODE_ENV task"
+    $build_dir/node_modules/.bin/gulp heroku
+  fi
+)
+
 # Update the PATH
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
