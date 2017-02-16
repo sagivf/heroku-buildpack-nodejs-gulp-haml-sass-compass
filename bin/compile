@@ -160,6 +160,7 @@ else
 fi
 
 # Check and run Gulp
+export NODE_ENV=${NODE_ENV:-production}
 (
   if $is_gulpfile_present; then
     status "Running gulp heroku:$NODE_ENV task"
